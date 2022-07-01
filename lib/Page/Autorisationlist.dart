@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animations/loading_animations.dart';
 import 'package:mobile/Auth/services/Crud.dart';
 import 'package:mobile/Page/theme.dart';
 
@@ -56,7 +57,22 @@ class _AutorisationListState extends State<AutorisationList> {
           Colors.orange.shade500,
           Colors.orange.shade300
         ])),
-        child: Visibility(visible: isLoaded, child: builder(auth)),
+        child: Visibility(visible: isLoaded, child: builder(auth), replacement: themejolie(donner: Center(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 200,
+                ),
+                LoadingBouncingLine.circle(
+                  borderColor: Colors.red,
+                  borderSize: 3.0,
+                  size: 200.0,
+                  backgroundColor: Colors.yellow,
+                  duration: Duration(milliseconds: 500),
+                ),
+              ],
+            ),
+          ),),),
       ),
     );
   }

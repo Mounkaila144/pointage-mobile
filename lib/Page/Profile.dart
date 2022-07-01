@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animations/loading_animations.dart';
 import 'package:mobile/Auth/services/Crud.dart';
+import 'package:mobile/Page/message.dart';
 import 'package:mobile/Page/theme.dart';
 import 'package:pretty_http_logger/pretty_http_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -103,21 +105,16 @@ class _ProfileState extends State<Profile> {
                   FadeAnimation(1, Text("Naissance : ${snapshot.data!.naissance.day}/${snapshot.data!.naissance.month}/${snapshot.data!.naissance.year}",style: TextStyle(color: Colors.white, fontSize: 25))),
                 ],
               ),
-              SizedBox(
-                height: 50,
-              ),
-              FadeAnimation(1.3, Text("Welcome Back", style: TextStyle(color: Colors.white, fontSize: 18),)),
             ],
           ),
           ),
           );
 
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error}');
         }
 
-        // By default, show a loading spinner.
-        return const CircularProgressIndicator();
+        else { // By default, show a loading spinner.
+          return Messageeror();
+        }
       },
     );
   }

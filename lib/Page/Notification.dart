@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animations/loading_animations.dart';
 import 'package:mobile/Auth/services/Crud.dart';
+import 'package:mobile/Page/Notificationoepage.dart';
 import 'package:mobile/Page/theme.dart';
 
 import '../service.dart';
@@ -46,7 +48,22 @@ class _NotifationlistState extends State<Notifationlist> {
           Colors.orange.shade500,
           Colors.orange.shade300
         ])),
-        child: Visibility(visible: isLoaded, child: builder(notif)),
+        child: Visibility(visible: isLoaded, child: builder(notif), replacement: themejolie(donner: Center(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 200,
+              ),
+              LoadingJumpingLine.circle(
+                borderColor: Colors.red,
+                borderSize: 3.0,
+                size: 200.0,
+                backgroundColor: Colors.yellow,
+                duration: Duration(milliseconds: 500),
+              ),
+            ],
+          ),
+        ),),),
       ),
     );
   }
@@ -66,6 +83,10 @@ Widget builder(List<Notificationpoint>? notification) => ListView.builder(
                 borderRadius: BorderRadius.circular(10),
               ),
               child: ListTile(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder:
+                      (context)=>NotificationOnePage(id: notif.id)));
+                },
                 leading: CircleAvatar(child: Icon(Icons.notifications)),
                 title: Text("Type  ${notif.type}"),
                 subtitle: Text("Notification n°${notif.id}"),

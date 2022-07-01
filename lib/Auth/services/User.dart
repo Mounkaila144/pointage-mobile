@@ -79,4 +79,80 @@ class DemandeAutorisation {
     "status": status,
   };
 }
+// To parse this JSON data, do
+//
+//     final notificationUn = notificationUnFromJson(jsonString);
+
+NotificationUn notificationUnFromJson(String str) => NotificationUn.fromJson(json.decode(str));
+
+String notificationUnToJson(NotificationUn data) => json.encode(data.toJson());
+
+class NotificationUn {
+  NotificationUn({
+    required this.id,
+    required this.employee,
+    required this.groupemployer,
+    required this.message,
+    required this.type,
+  });
+
+  int id;
+  List<String> employee;
+  List<dynamic> groupemployer;
+  String message;
+  String type;
+
+  factory NotificationUn.fromJson(Map<String, dynamic> json) => NotificationUn(
+    id: json["id"],
+    employee: List<String>.from(json["employee"].map((x) => x)),
+    groupemployer: List<dynamic>.from(json["groupemployer"].map((x) => x)),
+    message: json["message"],
+    type: json["type"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "employee": List<dynamic>.from(employee.map((x) => x)),
+    "groupemployer": List<dynamic>.from(groupemployer.map((x) => x)),
+    "message": message,
+    "type": type,
+  };
+}
+// To parse this JSON data, do
+//
+//     final entrerSortire = entrerSortireFromJson(jsonString);
+
+EntrerSortire entrerSortireFromJson(String str) => EntrerSortire.fromJson(json.decode(str));
+
+String entrerSortireToJson(EntrerSortire data) => json.encode(data.toJson());
+
+class EntrerSortire {
+  EntrerSortire({
+    required this.id,
+    required this.type,
+    required this.date,
+    required this.emploiyee,
+  });
+
+  int id;
+  String type;
+  DateTime date;
+  String emploiyee;
+
+  factory EntrerSortire.fromJson(Map<String, dynamic> json) => EntrerSortire(
+    id: json["id"],
+    type: json["type"],
+    date: DateTime.parse(json["date"]),
+    emploiyee: json["emploiyee"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "type": type,
+    "date": date.toIso8601String(),
+    "emploiyee": emploiyee,
+  };
+}
+
+
 

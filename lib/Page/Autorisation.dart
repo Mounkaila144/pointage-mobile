@@ -65,6 +65,9 @@ class _AutorisationPageState extends State<AutorisationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Demande"),
+      ),
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -87,18 +90,13 @@ class _AutorisationPageState extends State<AutorisationPage> {
                   FadeAnimation(
                       1,
                       Text(
-                        "Login",
-                        style: TextStyle(color: Colors.white, fontSize: 40),
+                        "Demande d'autorisation de sortir",
+                        style: TextStyle(color: Colors.white, fontSize: 30),
                       )),
                   SizedBox(
                     height: 10,
                   ),
-                  FadeAnimation(
-                      1.3,
-                      Text(
-                        "Welcome Back",
-                        style: TextStyle(color: Colors.white, fontSize: 18),
-                      )),
+
                 ],
               ),
             ),
@@ -106,7 +104,7 @@ class _AutorisationPageState extends State<AutorisationPage> {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.blue.shade900,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(60),
                         topRight: Radius.circular(60))),

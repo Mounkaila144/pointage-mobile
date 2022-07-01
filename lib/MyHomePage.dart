@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/Home.dart';
 import 'package:mobile/Liste.dart';
-import 'package:mobile/Login.dart';
+import 'package:mobile/Page/Autorisation.dart';
+import 'package:mobile/Page/Autorisationlist.dart';
+import 'package:mobile/Page/Notification.dart';
+import 'package:mobile/Page/Profile.dart';
+import 'package:mobile/Page/theme.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
+
+import 'Auth/Animation/FadeAnimation.dart';
+import 'Page/Login.dart';
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
@@ -60,12 +67,26 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               title: Text("Pointage"),
             ),
-            body:Home(),
+            body:
+            themejolie(donner: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+
+
+                FadeAnimation(1, Text("Bonjour Bienvenue dans l'Entreprise", style: TextStyle(color: Colors.white, fontSize: 40),)),
+                SizedBox(
+                  height: 10,
+                ),
+                FadeAnimation(1.3, Text("Welcome Back", style: TextStyle(color: Colors.white, fontSize: 18),)),
+              ],
+            ),
+            )
           ),
         ),
       ),
     );
   }
+  
 
   Widget buildMenu() {
     return SingleChildScrollView(
@@ -100,8 +121,11 @@ class _MyHomePageState extends State<MyHomePage> {
             dense: true,
           ),
           ListTile(
-            onTap: () {},
-            leading: const Icon(Icons.verified_user,
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder:
+                  (context)=>Profile()));
+            },
+            leading: const Icon(Icons.account_circle,
                 size: 20.0, color: Colors.white),
             title: const Text("Profile"),
             textColor: Colors.white,
@@ -112,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ListTile(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder:
-                  (context)=>Articlelist()));
+                  (context)=>Notifationlist()));
             },
             leading: const Icon(Icons.notifications,
                 size: 20.0, color: Colors.white),
@@ -125,11 +149,24 @@ class _MyHomePageState extends State<MyHomePage> {
           ListTile(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder:
-                  (context)=>Home()));
+                  (context)=>AutorisationPage()));
             },
             leading:
-            const Icon(Icons.star_border, size: 20.0, color: Colors.white),
+            const Icon(Icons.security, size: 20.0, color: Colors.white),
             title: const Text("Demande Autorisation"),
+            textColor: Colors.white,
+            dense: true,
+
+            // padding: EdgeInsets.zero,
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder:
+                  (context)=>AutorisationList()));
+            },
+            leading:
+            const Icon(Icons.security, size: 20.0, color: Colors.white),
+            title: const Text("Liste des Autorisation"),
             textColor: Colors.white,
             dense: true,
 
@@ -155,3 +192,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+

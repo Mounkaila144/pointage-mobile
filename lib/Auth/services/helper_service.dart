@@ -1,5 +1,5 @@
 class HelperService {
-  static const String host = "10.0.2.2";
+  static const String host = "192.168.43.219";
   static const int port = 8000;
   static const String scheme = "https";
   static const String apiPath = "/api/";

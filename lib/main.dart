@@ -1,9 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:jwt_decode/jwt_decode.dart';
 import 'package:mobile/Home.dart';
-import 'package:mobile/Login.dart';
-import 'package:shrink_sidemenu/shrink_sidemenu.dart';
+import 'package:mobile/Page/Login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'MyHomePage.dart';
 
@@ -16,15 +17,16 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Liquid Shrink SideMenu',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepOrange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const Login(),
+      home:Login(),
     );
   }
 }

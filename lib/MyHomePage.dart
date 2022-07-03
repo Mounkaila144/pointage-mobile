@@ -16,11 +16,15 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState(this.title);
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   bool isOpened = false;
+  String title;
+
+
+  _MyHomePageState(this.title);
 
   final GlobalKey<SideMenuState> _sideMenuKey = GlobalKey<SideMenuState>();
 
@@ -65,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: const Icon(Icons.menu),
                 onPressed: () => toggleMenu(),
               ),
-              title: Text("Pointage"),
+              title: Text(title),
             ),
             body:
             themejolie(donner: Column(
@@ -77,7 +81,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(
                   height: 10,
                 ),
-                FadeAnimation(1.3, Text("Welcome Back", style: TextStyle(color: Colors.white, fontSize: 18),)),
               ],
             ),
             )
@@ -95,28 +98,13 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 22.0,
-                ),
-                SizedBox(height: 16.0),
-                Text(
-                  "Hello, IKlass",
-                  style: TextStyle(color: Colors.white),
-                ),
-                SizedBox(height: 20.0),
-              ],
-            ),
-          ),
           ListTile(
-            onTap: () {},
-            leading: const Icon(Icons.home, size: 20.0, color: Colors.white),
-            title: const Text("Pointage"),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder:
+                  (context)=>MyHomePage(title: "Home")));
+            },
+            leading: const Icon(Icons.home, size: 30, color: Colors.white),
+            title: const Text("Pointage", style: TextStyle(color: Colors.white, fontSize: 16)),
             textColor: Colors.white,
             dense: true,
           ),
@@ -126,8 +114,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   (context)=>Profile()));
             },
             leading: const Icon(Icons.account_circle,
-                size: 20.0, color: Colors.white),
-            title: const Text("Profile"),
+                size: 30, color: Colors.white),
+            title: const Text("Profile", style: TextStyle(color: Colors.white, fontSize: 16)),
             textColor: Colors.white,
             dense: true,
 
@@ -139,8 +127,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   (context)=>Notifationlist()));
             },
             leading: const Icon(Icons.notifications,
-                size: 20.0, color: Colors.white),
-            title: const Text("Notification"),
+                size: 30, color: Colors.white),
+            title: const Text("Notification", style: TextStyle(color: Colors.white, fontSize: 16)),
             textColor: Colors.white,
             dense: true,
 
@@ -152,8 +140,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   (context)=>AutorisationPage()));
             },
             leading:
-            const Icon(Icons.security, size: 20.0, color: Colors.white),
-            title: const Text("Demande Autorisation"),
+            const Icon(Icons.security, size: 30, color: Colors.white),
+            title: const Text("Demande Autorisation", style: TextStyle(color: Colors.white, fontSize: 16)),
             textColor: Colors.white,
             dense: true,
 
@@ -165,8 +153,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   (context)=>AutorisationList()));
             },
             leading:
-            const Icon(Icons.security, size: 20.0, color: Colors.white),
-            title: const Text("Liste des Autorisation"),
+            const Icon(Icons.security, size: 30, color: Colors.white),
+            title: const Text("Liste des Autorisation", style: TextStyle(color: Colors.white, fontSize: 16)),
             textColor: Colors.white,
             dense: true,
 
@@ -174,14 +162,15 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           ListTile(
             onTap: () {
+             // Login().Deconnecter();
     Navigator.push(context, MaterialPageRoute(builder:
     (context)=>Login()));
 
-              Login().Deconnecter();
+
             },
             leading:
-            const Icon(Icons.logout, size: 20.0, color: Colors.white),
-            title: const Text("Deconexion"),
+            const Icon(Icons.logout, size: 30, color: Colors.white),
+            title: const Text("Deconexion", style: TextStyle(color: Colors.white, fontSize: 16)),
             textColor: Colors.white,
             dense: true,
 

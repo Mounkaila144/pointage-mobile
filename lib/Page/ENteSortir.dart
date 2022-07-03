@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/MyHomePage.dart';
 import 'package:mobile/Page/theme.dart';
+import 'package:mobile/face/face.dart';
 import 'package:pretty_http_logger/pretty_http_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -107,7 +108,7 @@ class Porte extends StatelessWidget {
                     onPressed: () async {
                       ActionES(type: "sorti");
     Navigator.push(context, MaterialPageRoute(builder:
-    (context)=>MyHomePage(title: "Porte Sorti")));
+    (context)=>MyHomePage(title: "Porte de sorti")));
                     },
                     child: Text("Sortir", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                   ),

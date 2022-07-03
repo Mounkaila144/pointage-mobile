@@ -182,13 +182,17 @@ class Notificationpoint {
 // To parse this JSON data, do
 //
 //     final employee1 = employee1FromJson(jsonString);
+// To parse this JSON data, do
+//
+//     final employee1 = employee1FromJson(jsonString);
+
 Employee1 employee1FromJson(String str) => Employee1.fromJson(json.decode(str));
 
 String employee1ToJson(Employee1 data) => json.encode(data.toJson());
 
 class Employee1 {
   Employee1({
-    required  this.id,
+    required this.id,
     required this.email,
     required this.roles,
     required this.password,
@@ -198,6 +202,7 @@ class Employee1 {
     required this.naissance,
     required this.notificatons,
     required this.pointages,
+    required this.imageName,
     required this.userIdentifier,
     required this.verified,
   });
@@ -211,7 +216,8 @@ class Employee1 {
   List<dynamic> autorisations;
   DateTime naissance;
   List<String> notificatons;
-  List<String> pointages;
+  List<dynamic> pointages;
+  String imageName;
   String userIdentifier;
   bool verified;
 
@@ -225,7 +231,8 @@ class Employee1 {
     autorisations: List<dynamic>.from(json["autorisations"].map((x) => x)),
     naissance: DateTime.parse(json["naissance"]),
     notificatons: List<String>.from(json["notificatons"].map((x) => x)),
-    pointages: List<String>.from(json["pointages"].map((x) => x)),
+    pointages: List<dynamic>.from(json["pointages"].map((x) => x)),
+    imageName: json["imageName"],
     userIdentifier: json["userIdentifier"],
     verified: json["verified"],
   );
@@ -241,7 +248,9 @@ class Employee1 {
     "naissance": naissance.toIso8601String(),
     "notificatons": List<dynamic>.from(notificatons.map((x) => x)),
     "pointages": List<dynamic>.from(pointages.map((x) => x)),
+    "imageName": imageName,
     "userIdentifier": userIdentifier,
     "verified": verified,
   };
 }
+

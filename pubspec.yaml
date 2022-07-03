@@ -48,6 +48,8 @@ dependencies:
   date_field: ^3.0.1
   form_builder_validators: ^8.1.1
   loading_animations: ^2.2.0
+  flutter_face_api_beta: ^0.0.64
+
 
 dev_dependencies:
   flutter_test:
@@ -65,7 +67,9 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
+  assets:
+    - assets/images/
+    - assets/images/mkl.jpg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

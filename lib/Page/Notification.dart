@@ -48,7 +48,8 @@ class _NotifationlistState extends State<Notifationlist> {
           Colors.orange.shade500,
           Colors.orange.shade300
         ])),
-        child: Visibility(visible: isLoaded, child: builder(notif), replacement: themejolie(donner: Center(
+        child: Visibility(visible: isLoaded, child: builder(notif), replacement:
+        themejolie(donner: Center(
           child: Column(
             children: [
               SizedBox(
@@ -63,7 +64,8 @@ class _NotifationlistState extends State<Notifationlist> {
               ),
             ],
           ),
-        ),),),
+        ),),
+        ),
       ),
     );
   }

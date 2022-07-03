@@ -111,9 +111,27 @@ class _ProfileState extends State<Profile> {
           );
 
         }
-
-        else { // By default, show a loading spinner.
+        if(snapshot.hasError){
           return Messageeror();
+        }
+        else { // By default, show a loading spinner.
+          return themejolie(donner: Center(
+          child: Column(
+          children: [
+          SizedBox(
+              height: 200,
+          ),
+        LoadingJumpingLine.circle(
+        borderColor: Colors.red,
+        borderSize: 3.0,
+        size: 200.0,
+        backgroundColor: Colors.yellow,
+        duration: Duration(milliseconds: 500),
+        ),
+        ],
+        ),
+        ),
+          );
         }
       },
     );
